@@ -5,18 +5,23 @@
 #
 # See default.config.yml for additional options.
 
-vagrant_box: geerlingguy/ubuntu1804
-
 vagrant_hostname: monkiicode.test
+
+vagrant_box: geerlingguy/ubuntu1804
 
 installed_extras:
   - drush
 
 firewall_enabled: false
 
+# This doesn't work without sec=sys in mount_options, perhaps a vbox version issue
 vagrant_synced_folders:
 - local_path: .
   destination: /var/www/drupalvm
   type: nfs
   create: true
   mount_options: ['sec=sys']
+
+# Drupal has already been provisioned and committed to the repo
+drupal_build_composer_project: false
+#drupal_build_composer: true
