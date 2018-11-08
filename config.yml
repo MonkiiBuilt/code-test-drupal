@@ -1,0 +1,22 @@
+---
+# Credit to geerlingguy for the excellent drupal-vm project which we use to give
+# our test participants a ready-made development and testing environment.
+# https://github.com/geerlingguy/drupal-vm
+#
+# See default.config.yml for additional options.
+
+vagrant_box: geerlingguy/ubuntu1804
+
+vagrant_hostname: monkiicode.test
+
+installed_extras:
+  - drush
+
+firewall_enabled: false
+
+vagrant_synced_folders:
+- local_path: .
+  destination: /var/www/drupalvm
+  type: nfs
+  create: true
+  mount_options: ['sec=sys']
